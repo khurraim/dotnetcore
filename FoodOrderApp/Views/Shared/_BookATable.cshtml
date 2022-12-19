@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FoodOrderApp.Models.Products>;
+<!-- ======= Book A Table Section ======= -->
+<section id="book-a-table" class="book-a-table">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+            <h2>Book A Table</h2>
+            <p>Book <span>Your Stay</span> With Us</p>
+        </div>
+
+        <div class="row g-0">
+
+            <div class="col-lg-4 reservation-img" style="background-image: url(/img/reservation.jpg);" ></div>
+
+            <div class="col-lg-8 col-md-8 d-flex align-items-center reservation-form-bg">
+                <form asp-controller="Admin" asp-action="SaveOrder" method="post" class="php-email-form" >
+                    <div class="row gy-4">
+
+
+                        <div class="col-lg-12 col-md-12">
+                            <input type="text" for="OrderName" name="OrderName" class="form-control" placeholder="Your Name" />
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <input type="text" for="OrderAdress" name="OrderAdress" class="form-control" placeholder="Your Address" />
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <input type="text" for="OrderPhone" name="OrderPhone" class="form-control" placeholder="Your Phone" />
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <select name="OrderItem" for="OrderItem">
+                                @foreach(var item in Model)
+                                {
+                                    <option name="OrderItem"for="OrderItem">@Html.DisplayFor(modelItem => item.ProductName)</option>
+                                }
+                            </select>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                   
+                    <input type="submit" class="btn btn-danger mt-3" value="Order" />
+                </form>
+            </div><!-- End Reservation Form -->
+
+        </div>
+
+    </div>
+</section><!-- End Book A Table Section -->

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<FoodOrderApp.Models.Products>;
+
+
+<div class="container p-5 my-5">
+    <div class="row">
+    @foreach(var item in Model)
+    {
+        <div class="col-sm-3 col-md-3 col-lg-3 col-12">
+            <div class="card card-body">
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+                <h4>@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                <h6 class="text-danger">@Html.DisplayFor(modelItem => item.ProductPrice)</h6>
+            </div>
+        </div>
+
+    }
+    </div>
+</div>

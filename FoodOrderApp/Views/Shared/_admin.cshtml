@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Http;
+@if (Context.Session.GetString("adminname") != null)
+{
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/admin.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+        @RenderSection("Scripts", required: false)
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-12 " style="background: #333; height: 100vh;">
+            <img class="img-fluid my-5 rounded-circle w-50 d-block mx-auto" src="https://www.biowritingservice.com/wp-content/themes/tuborg/images/Executive%20Bio%20Sample%20Photo.png" />
+           
+            <div class="admin-menu-item">
+                <a asp-action="index" asp-controller="Messages">Messages</a>
+            </div>
+            
+            <div class="admin-menu-item">
+                    <a asp-action="index" asp-controller="Products">View Products</a>
+            </div>
+            <div class="admin-menu-item">
+                <a asp-action="index" asp-controller="Orders">View Orders</a>
+            </div>
+            
+            <div class="admin-menu-item">
+                <a asp-action="Logout" asp-controller="Admin">Logout</a>
+            </div>
+        </div>
+
+        <div class="col-sm-9 col-md-9 col-lg-9 col-12">
+            @RenderBody()
+        </div>
+        
+    </div>
+</body>
+</html>
+}
+else {
+     @RenderSection("Scripts", required: false)
+    @RenderBody();
+    Context.Response.Redirect("/Login");
+}
